@@ -1,0 +1,17 @@
+{% extends 'layouts/default.html' %}
+{% block body %}
+<div class="container" role="main">
+    <div class="row">
+        <div class="col-lg-12 bg-transparent">
+            <center><h1>ABOUT Page</h1></center>
+        </div>
+    </div>
+</div>
+<form action="/index">
+    <label for="fname">First name:</label><br>
+    <input type="text" id="fname" name="fname" value="John"><br>
+    <label for="lname">Last name:</label><br>
+    <input type="text" id="lname" name="lname" value="Doe"><br><br>
+    <input type="submit" value="Submit">
+</form> 
+{% endblock body %}

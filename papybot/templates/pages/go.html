@@ -1,0 +1,28 @@
+{% extends 'layouts/default.html' %}
+{% block body %}
+<div class="container" role="main">
+    <form class="question" method="post">
+        <div class="row">
+            <div class="col-xs-1">
+                <img src="{{ url_for('static',filename='/img/papy2.jpg')}}" class="img-fluid papy" alt="papy" />
+            </div>
+            <div class="col-xs-11 bonjour">
+                <img src="{{ url_for('static',filename='/img/ajax-loader.gif')}}" hidden class="ajax-gif" />
+            </div>
+        </div>
+        <div class="row dialog">
+            <div class="col-xs-1">
+                <img src="{{ url_for('static',filename='/img/enfant.jpg')}}" class="img-fluid" alt="papy" />
+            </div>
+            <div class="col-xs-5 question">
+                <TEXTAREA name="quest" class="quest" rows=3 cols=30 
+                    placeholder="Entre ta question mon petit !"></TEXTAREA>
+            </div>
+        <div class="dialog2 col-md-6 col-xs-12">
+            <input type="submit" class="send" value="Envoyer" />
+        </div>
+    </div>
+    <!-- {{ request.script_root|tojson|safe }} -->
+    </form>
+</div>
+{% endblock body %}

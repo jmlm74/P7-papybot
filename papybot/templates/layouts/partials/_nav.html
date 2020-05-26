@@ -1,0 +1,37 @@
+<header>
+    <nav class="navbar navbar-dark bg-dark fixed-top navbar-expand-md">
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse" 
+        aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="{{ url_for('home') }}">PapyBot</a>
+
+    <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav mr-auto mt-2 mt-lg-0" >
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('go') }}">Parler avec Papy-Bot</a>
+            </li>
+            <li class=" nav-item dropdown active">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                     >map-style</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item osm">OpenStreetMap</a>
+                    <a class="dropdown-item google">Google</a>
+                </div>
+            </li>
+        </ul>
+        <ul class="navbar-nav text-right">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('about') }}">About</a>
+            </li>
+            <li class="nav-item disabled">
+                <span class="nav-link disabled white">{{now.year}}-{{now.month}}-{{now.day}} - {{now.hour}}:{{now.minute}}</span>
+                
+            </li>
+        </ul>
+    </div>
+    </nav>
+</header>
