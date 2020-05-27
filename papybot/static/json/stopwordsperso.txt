@@ -1,6 +1,8 @@
-["grandpy","papy","grand-pere","salut","bonjour","hello","connais","cherche","sais", "penses", 
-"quoi", "dis", "entendu", "parlé","hello", "salut", "bonjour", "coucou", "salutations", 
-"pépé", "merci","adresse", "endroit", "lieu", "coordonnées","grandma","indique","indiquer",
-"hier","demain","aujourd","hui","mamie","bonsoir","salutations","trouve","plait","adresse", 
+["grandpy","papy","grandpere","grandmere", "salut","bonjour","hello","connais","cherche","sais", "penses",
+"quoi", "dis", "entendu", "parle","hello", "salut", "bonjour", "coucou", "salutations",
+"pepe", "merci","adresse", "endroit", "lieu", "coordonnées","grandma","indique","indiquer",
+"hier","demain","aujourd","hui","mamie","bonsoir","salutations","trouve","plait","adresse",
 "endroit", "lieu", "lieux","avance","coordonnées", "bises", "espere","souhaite","bisous","embrasse",
-"peux","soir","soiree","matin","enfin","passe","remercie","voir" ]
+"peux","soir","soiree","matin","enfin","passe","remercie","voir","dire","pense", "peux", "situe",
+"recherche","voudrais","savoir","pouvoir","trouver","remercier","vois","adresser","embrasser", 
+"pere", "mere"]

@@ -1,69 +1,24 @@
 {
-   "results" : [
+   "candidates" : [
       {
-         "access_points" : [],
-         "address_components" : [
-            {
-               "long_name" : "5",
-               "short_name" : "5",
-               "types" : [ "street_number" ]
-            },
-            {
-               "long_name" : "Avenue Anatole France",
-               "short_name" : "Avenue Anatole France",
-               "types" : [ "route" ]
-            },
-            {
-               "long_name" : "Paris",
-               "short_name" : "Paris",
-               "types" : [ "locality", "political" ]
-            },
-            {
-               "long_name" : "Arrondissement de Paris",
-               "short_name" : "Arrondissement de Paris",
-               "types" : [ "administrative_area_level_2", "political" ]
-            },
-            {
-               "long_name" : "Île-de-France",
-               "short_name" : "IDF",
-               "types" : [ "administrative_area_level_1", "political" ]
-            },
-            {
-               "long_name" : "France",
-               "short_name" : "FR",
-               "types" : [ "country", "political" ]
-            },
-            {
-               "long_name" : "75007",
-               "short_name" : "75007",
-               "types" : [ "postal_code" ]
-            }
-         ],
-         "formatted_address" : "Champ de Mars, 5 Avenue Anatole France, 75007 Paris, France",
+         "formatted_address" : "Route de Morat 12, 1700 Fribourg, Suisse",
          "geometry" : {
             "location" : {
-               "lat" : 48.85837009999999,
-               "lng" : 2.2944813
+               "lat" : 46.8077191,
+               "lng" : 7.159642
             },
-            "location_type" : "ROOFTOP",
             "viewport" : {
                "northeast" : {
-                  "lat" : 48.8597190802915,
-                  "lng" : 2.295830280291502
+                  "lat" : 46.80902367989273,
+                  "lng" : 7.160927179892721
                },
                "southwest" : {
-                  "lat" : 48.8570211197085,
-                  "lng" : 2.293132319708498
+                  "lat" : 46.80632402010728,
+                  "lng" : 7.158227520107277
                }
             }
          },
-         "partial_match" : true,
-         "place_id" : "ChIJLU7jZClu5kcR4PcOOO6p3I0",
-         "plus_code" : {
-            "compound_code" : "V75V+8Q Paris, France",
-            "global_code" : "8FW4V75V+8Q"
-         },
-         "types" : [ "establishment", "point_of_interest", "tourist_attraction" ]
+         "name" : "Musée d'Art et d'histoire"
       }
    ],
    "status" : "OK"

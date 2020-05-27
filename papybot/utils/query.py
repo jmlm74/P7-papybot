@@ -33,8 +33,8 @@ class Query:
             the parsed query as a string (words are space sparated)
         """
         stop_words_minus = []
-        ponctuation = ['.', ',', '?', '!', '-', "'", '"', '[', ']', '/', '{', '}', '<', '>', '&','^','#',
-                       '$']
+        ponctuation = ['.', ',', '?', '!', '-', "'", '"', '[', ']', '/', '{', '}', '<', '>', '&',
+            '^', '#', '$']
         list_words_ok = []
         list_query = []
         list_query2 = []

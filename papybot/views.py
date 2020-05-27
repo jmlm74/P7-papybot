@@ -3,7 +3,7 @@ from datetime import datetime
 import json
 
 from .utils.query import Query
-from .utils.api import Gooapi
+from .utils.api import Gooapi, Wikiapi
 from .config import map_style, MAPBOX, GOOGLE
 
 from . import app
@@ -78,6 +78,7 @@ def page_not_found(error):
 
 @app.route("/ajax/", methods=['POST'])
 def ajax():
+    google_error = False
     if request.method == 'POST':
         request_data = json.loads(request.data)
         query = Query(request_data['question'])
@@ -85,9 +86,20 @@ def ajax():
         print(resp)
         # ici on envoi pour google
         my_gooapi = Gooapi(resp)
-        tab_result = my_gooapi.get_json()
+        goo_result = my_gooapi.get_json()
         map = map_provider()
-        resp_dict = jsonify({'map': map, 'tab_result': tab_result})
+        #! resp_dict = jsonify({'map': map, 'tab_result': tab_result})
+        try:
+            goo_result['name']
+        except KeyError:
+            google_error = True
+            goo_result['adress'] = 'Error'
+            wiki_result = ""
+        if not google_error:
+            my_wikiapi = Wikiapi(goo_result['name'])
+            wiki_result = my_wikiapi.get_json()
+            print(wiki_result)
+        resp_dict = jsonify({'goo_result': goo_result, 'wiki_result': wiki_result})
     return resp_dict
 
 

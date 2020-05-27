@@ -1,132 +1,24 @@
 {
-   "results" : [
+   "candidates" : [
       {
-         "access_points" : [],
-         "address_components" : [
-            {
-               "long_name" : "12",
-               "short_name" : "12",
-               "types" : [ "street_number" ]
-            },
-            {
-               "long_name" : "Route de Morat",
-               "short_name" : "Route de Morat",
-               "types" : [ "route" ]
-            },
-            {
-               "long_name" : "Fribourg",
-               "short_name" : "Fribourg",
-               "types" : [ "locality", "political" ]
-            },
-            {
-               "long_name" : "La Sarine",
-               "short_name" : "La Sarine",
-               "types" : [ "administrative_area_level_2", "political" ]
-            },
-            {
-               "long_name" : "Fribourg",
-               "short_name" : "FR",
-               "types" : [ "administrative_area_level_1", "political" ]
-            },
-            {
-               "long_name" : "Switzerland",
-               "short_name" : "CH",
-               "types" : [ "country", "political" ]
-            },
-            {
-               "long_name" : "1700",
-               "short_name" : "1700",
-               "types" : [ "postal_code" ]
-            }
-         ],
-         "formatted_address" : "Route de Morat 12, 1700 Fribourg, Switzerland",
+         "formatted_address" : "Champ de Mars, 5 Avenue Anatole France, 75007 Paris, France",
          "geometry" : {
             "location" : {
-               "lat" : 46.8077191,
-               "lng" : 7.159642
+               "lat" : 48.85837009999999,
+               "lng" : 2.2944813
             },
-            "location_type" : "ROOFTOP",
             "viewport" : {
                "northeast" : {
-                  "lat" : 46.8090680802915,
-                  "lng" : 7.160990980291502
+                  "lat" : 48.85974697989273,
+                  "lng" : 2.29610765
                },
                "southwest" : {
-                  "lat" : 46.8063701197085,
-                  "lng" : 7.158293019708498
+                  "lat" : 48.85704732010728,
+                  "lng" : 2.29251745
                }
             }
          },
-         "place_id" : "ChIJM8sdYjBpjkcRbllEnuh_XY0",
-         "plus_code" : {
-            "compound_code" : "R555+3V Fribourg, Switzerland",
-            "global_code" : "8FR9R555+3V"
-         },
-         "types" : [ "establishment", "museum", "point_of_interest", "tourist_attraction" ]
-      },
-      {
-         "access_points" : [],
-         "address_components" : [
-            {
-               "long_name" : "6",
-               "short_name" : "6",
-               "types" : [ "street_number" ]
-            },
-            {
-               "long_name" : "Chemin du Musée",
-               "short_name" : "Chemin du Musée",
-               "types" : [ "route" ]
-            },
-            {
-               "long_name" : "Fribourg",
-               "short_name" : "Fribourg",
-               "types" : [ "locality", "political" ]
-            },
-            {
-               "long_name" : "La Sarine",
-               "short_name" : "La Sarine",
-               "types" : [ "administrative_area_level_2", "political" ]
-            },
-            {
-               "long_name" : "Fribourg",
-               "short_name" : "FR",
-               "types" : [ "administrative_area_level_1", "political" ]
-            },
-            {
-               "long_name" : "Switzerland",
-               "short_name" : "CH",
-               "types" : [ "country", "political" ]
-            },
-            {
-               "long_name" : "1700",
-               "short_name" : "1700",
-               "types" : [ "postal_code" ]
-            }
-         ],
-         "formatted_address" : "Chemin du Musée 6, 1700 Fribourg, Switzerland",
-         "geometry" : {
-            "location" : {
-               "lat" : 46.7932627,
-               "lng" : 7.156307300000001
-            },
-            "location_type" : "ROOFTOP",
-            "viewport" : {
-               "northeast" : {
-                  "lat" : 46.7946116802915,
-                  "lng" : 7.157656280291503
-               },
-               "southwest" : {
-                  "lat" : 46.7919137197085,
-                  "lng" : 7.154958319708499
-               }
-            }
-         },
-         "place_id" : "ChIJh_eBKdhojkcROJBEjEsiCWs",
-         "plus_code" : {
-            "compound_code" : "Q5V4+8G Fribourg, Switzerland",
-            "global_code" : "8FR9Q5V4+8G"
-         },
-         "types" : [ "establishment", "museum", "point_of_interest", "tourist_attraction" ]
+         "name" : "Tour Eiffel"
       }
    ],
    "status" : "OK"

@@ -1,22 +1,32 @@
 $(function(){
     console.log("loaded")
-    $('<input type="text" value="Bonjour, mon petit ! Que puis-je pour toi ?" size="32" readonly>').appendTo($('.bonjour'));
+    $('<input type="text" class="form-control test" value="Bonjour, mon petit ! Que puis-je pour toi ?" size="32" readonly>').appendTo($('.bonjour'));
     $('form.question').on('submit', submit_event);
-    
+    $('.reload').on('click',function(){
+        $('.quest').val('');
+        location.reload();
+    });
+
     // init the mapstyle (OSM or Google)
     map_style()
-    // mapstyle dropdown menu
+    // mapstyle dropdown menu (google map or OSM map)
     $('li .osm').on('click',function(){
         console.log("Vu OSM");
-        Send_ajax('post',"/goosm/","OSM","text","text/plain");
-        mapstyle = "OSM"
-        map_style()
+        Send_ajax('post',"/goosm/","OSM","text","text/plain")
+        .done( function(response) {
+            mapstyle = "OSM";
+            map_style();
+            location.reload(true);
+        });
     });
     $('li .google').on('click',function(){
         console.log("Vu GOOGLE");
-        Send_ajax('post',"/goosm/","GOOGLE","text","text/plain");
-        mapstyle = "GOOGLE"
-        map_style()
+        Send_ajax('post',"/goosm/","GOOGLE","text","text/plain")
+        .done( function(response) {
+            mapstyle = "GOOGLE"
+            map_style()
+            location.reload(true);
+        });
     });
 
 });
@@ -25,15 +35,20 @@ $(function(){
 var submit_event = function(event){
     var question;
     var data;
+
+    if ($('.quest').val().length == 0) {
+        return false;
+    }
+    $('.send').prop("disabled",true)
     /*
         use to call ajax to parse the question and update the page for waiting for the answer
         Ajax returns the parsed question
     */
     /* wait display */
-    $('<div class="row attendrerow"> <div class="col-xs-1 image1"></div></div>').insertAfter($('.dialog'))
+    $('<div class="row attendrerow"><div class="col-12 col-md-1 image1"></div></div>').insertAfter($('.dialog'))
     $('.papy').clone().appendTo($('.image1'))
-    $('<div class="col-xs-11 attendre"></div>').appendTo($('attendrerow'))
-    $('<input type="text" value="Attends un peu, je réfléchis..." size="32" readonly>').appendTo($('.attendrerow'));
+    $('<div class="col-12 col-md-4 attendre"></div>').appendTo($('.attendrerow'))
+    $('<input type="text" class="form-control" value="Attends un peu, je réfléchis..." size="32" readonly>').appendTo($('.attendre'));
     $('.ajax-gif').clone().appendTo($('.attendrerow')).removeAttr('hidden')
 
     question={'question': $('.quest').val()};
@@ -41,7 +56,8 @@ var submit_event = function(event){
     /* the send_ajax is a promise --> wait for the done or the fail */
     Send_ajax('post','/ajax/',data)
     .done( function(response) {
-        affiche_map(response)
+        display_map(response)
+        display_wiki(response)
 
     })
     .fail( function(response) {
@@ -53,6 +69,9 @@ var submit_event = function(event){
 
 
 var Send_ajax = function(type=post ,url, data, datatype='json', contenttype='application/json' ){
+    /*
+    Send ajax request to server 
+    */
     return $.ajax({
         type: type,
         url: url,
@@ -60,25 +79,96 @@ var Send_ajax = function(type=post ,url, data, datatype='json', contenttype='app
         dataType: datatype,
         contentType: contenttype,
     })
-};
+}; 
+
+var map_style = function(){
+    /*
+    The dropdown menu map-style 
+    */
+    if (mapstyle == 'OSM'){
+        $('li .osm').addClass('active')
+        $('li .google').removeClass('active')
+    } else {
+        $('li .osm').removeClass('active')
+        $('li .google').addClass('active')
+    }
+}
 
 
-var affiche_map = function(response_ajax){
+
+/************************/
+/*      Display Wiki    */
+/************************/
+var display_wiki = function(response_ajax){
+    /*
+    Display the wiki result in a textarea 
+    href to the wikipedia link
+    */
+    var text;
+    var wikilink;
+    var result = response_ajax['wiki_result'];
+    
+    if (result['error'] == true) {
+        return false
+    }
+    $('<section class="col-12"><div class="row wikiresp form-group"> <div class="col-sm-2 col-12 imagewiki"></div></div></section')
+    .appendTo($('.wiki'))
+    $('.papy:first').clone().appendTo($('.imagewiki'))
+    $('<div class="papyresp col-sm-10 col-12"><textarea class="form-control rounded-0 wikitext" rows="12"></textarea></div>')
+    .appendTo($('.wikiresp'))
+    text = "Ah oui, ca me revient !\nTiens regarde le plan pour t'y rendre.\n"
+    text = text + "Et tu savais que : " + result['extract']
+    $('.wikitext').text(text);
+    $('<hr />').appendTo($('.wiki'));
+    wikilink = "https://fr.wikipedia.org?curid=" + result['id']
+    $('<a href="'+wikilink+'" target="_blank">En savoir plus sur Wikipedia</a>').appendTo($('.wiki'));
+    $('<div class="row wikiresp2 col-12"> <div class="col-sm-2 col-12 imagewiki2"></div></div>').appendTo($('.wiki'))
+    $('.papy:first').clone().appendTo($('.imagewiki2'))
+    $('<div class="col-xs-11 wikitext2"></div>').appendTo($('.wikiresp2'))
+    $('<input type="text" class="form-control" value="Si tu veux savoir autre chose, n\'hesite pas !!" size="32" readonly>').appendTo($('.wikitext2'));
+}
+
+
+/************************/
+/*      Display Map     */
+/************************/
+var display_map = function(response_ajax){
+    /*
+    display the map (OSM or Google)
+    params : The ajax response
+        --> get the geometry to display
+        --> get the adress to catch an error --> no response for the query or other
+    */
     let lat = 0;
     let lon = 0;
     let address = "";
-    result_map = response_ajax['map'];
 
-    response_ajax['tab_result'].forEach(function(result){
-        address = result['address'];
-        lon = result['longitude'];
-        lat = result['latitude'];
-    });
+    // hide the anim gif
     $('.ajax-gif').attr('hidden','hidden');
-    $('<div class="row map"> <div class="col-md-6 map" id="mapdiv"></div></div>')
-    .insertAfter($('.attendrerow'));
+    result = response_ajax['goo_result'];
+    address = result['address'];
+    lon = result['longitude'];
+    lat = result['latitude'];
+    name = result['name'];
 
+    if (address == 'None' || address == 'Error' || address == null) {
+        $('<div class="row erreurrow"> <div class="col-xs-1 image2"></div></div>')
+        .insertAfter($('.attendrerow'));
+        $('.papy:first').clone().appendTo($('.image2'));
+        $('<div class="col-xs-11 erreur"></div>').appendTo($('erreurrow'));
+        $('<textarea  rows="2" cols="32" readonly>mmmhhh Ca ne me dis rien mon grand ! désolé</textarea>')
+        .appendTo($('.erreurrow'));
+        return false;
+    };
+    // the div for the map
+    let line = '<section class="col-md-12"><div class="row mapwikirow">'
+    line += '<div class="col-md-6 wiki" id="wikidiv"></div><div class="col-md-6" id="mapdiv"></div></div></section>'
+    // ! $('<section class="col-md-12"><div class="row mapwikirow"><div class="col-md-6" id="mapdiv"></div></div></section>')
+    $(line)
+    .insertAfter($('.attendrerow'));
+    // THE MAP !
     if (mapstyle == 'GOOGLE' ){
+        // Google map-style
         map = new google.maps.Map(document.getElementById('mapdiv'), {
           center: {lat: lat, lng: lon},
           zoom: 14
@@ -86,6 +176,7 @@ var affiche_map = function(response_ajax){
         var position = {lat: lat,lng : lon};
         var marker = new google.maps.Marker({position: position, map: map});
     } else {
+        // OSM map-style
         map = new OpenLayers.Map("mapdiv");
         map.addLayer(new OpenLayers.Layer.OSM());
         var lonLat = new OpenLayers.LonLat(lon ,lat)
@@ -101,13 +192,3 @@ var affiche_map = function(response_ajax){
     }
 }
 
-
-let map_style = function(){
-    if (mapstyle == 'OSM'){
-        $('li .osm').addClass('active')
-        $('li .google').removeClass('active')
-    } else {
-        $('li .osm').removeClass('active')
-        $('li .google').addClass('active')
-    }
-}
