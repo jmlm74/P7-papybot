@@ -8,13 +8,15 @@ from  papybot import app
 # test homepage return 200
 def test_index_page_return200():
     print("test_index")
-    rc = requests.get("http://127.0.0.1:5000/index/")
+    # rc = requests.get("http://127.0.0.1:5000/index/")
+    rc = requests.get("https://jmlm-p7papybot.herokuapp.com/index/")
     assert rc.status_code == 200
 
 # test 404 page return 404 and not 200
 def test_foobar_return404():
     print("test_404")
-    rc = requests.get("http://127.0.0.1:5000/foobar/")
+    # rc = requests.get("http://127.0.0.1:5000/foobar/")
+    rc = requests.get("https://jmlm-p7papybot.herokuapp.com/foobar/")
     assert rc.status_code == 404
 
 

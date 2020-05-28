@@ -20,13 +20,13 @@ WIKI = {
 }
 
 MESSAGES = [
-    "Mais t\'ai-je déjà raconté l\'histoire de ce quartier qui m\'a vu en culottes courtes ?",
+    "Mais t\'ai-je déjà raconté l\'histoire de ce quartier où j'habitais à ton age ? ?",
     "Voilà mon grand",
     "Ah attends un peu ! Ca me revient !",
     "Bien sûr mon petit ! Tu doutes de ton grand-père !",
     "Oh oui, je m'en souviens bien, ça tombe bien qu tu m\'en parles.",
-    "Ouh, ça fait un bail! J'ai un peu perdu la mémoire tu sais !",
-    "Oh, oui, je connais. D'ailleurs j'ai passé un boût de temps dans le coin.",
-    "GrandMy adorait cet endroit, on y est allé souvent",
-    "Ah avec ta grand-mère on y a passé de bons moments… ",
+    "Ouh la la, ça fait un bail! J'ai un peu perdu la mémoire tu sais !",
+    "Oh, oui, je connais. D'ailleurs j'ai passé un bout de temps dans le coin.",
+    "GrandMy adorait cet endroit, nous nous y sommes souvent rendu",
+    "Ah avec ta grand-mère on y a passé de bons moments…  ",
 ]
