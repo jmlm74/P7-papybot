@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 from datetime import datetime
 import json
+import os
 
 from .utils.query import Query
 from .utils.api import Gooapi, Wikiapi
@@ -34,7 +35,7 @@ def map_provider():
         key = MAPBOX['key']
     else:
         map = 'GOOGLE'
-        key = GOOGLE['key']
+        key = os.environ['GOOGLE_KEY']
     return {'map': map, 'key': key}
 
 

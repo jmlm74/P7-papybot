@@ -1,5 +1,6 @@
 import random
 import requests
+import os
 
 from papybot.config import GOOGLE, WIKI, MESSAGES
 
@@ -35,14 +36,14 @@ class Gooapi(Api):
             Build the complete url for the request
         """
         Api.__init__(self, query)
-        self.url_complete = GOOGLE["url"] + self.query + "&key=" + GOOGLE["key"]
+        self.url_complete = GOOGLE["url"] + self.query + "&key=" + os.environ["GOOGLE_KEY"]
 
     def get_json(self):
         """
             Params : None
             Return : dict of the result of the request
             Call the api_get_json function of the mother class
-            Test the reponse Return Code and parse the datas 
+            Test the reponse Return Code and parse the datas
             use the 'findplacefromtext' function in google API
         """
         result = {}
