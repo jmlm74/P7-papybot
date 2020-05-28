@@ -101,8 +101,9 @@ var map_style = function(){
 /************************/
 var display_wiki = function(response_ajax){
     /*
-    Display the wiki result in a textarea 
+    Display the formatted wiki result in a textarea 
     href to the wikipedia link
+    and the goodbye message
     */
     var text;
     var wikilink;
@@ -116,8 +117,8 @@ var display_wiki = function(response_ajax){
     $('.papy:first').clone().appendTo($('.imagewiki'))
     $('<div class="papyresp col-sm-10 col-12"><textarea class="form-control rounded-0 wikitext" rows="12"></textarea></div>')
     .appendTo($('.wikiresp'))
-    text = "Ah oui, ca me revient !\nTiens regarde le plan pour t'y rendre.\n"
-    text = text + "Et tu savais que : " + result['extract']
+    text = result['msg'] + "\nOui je connais l'adresse : La voici : "+ response_ajax['goo_result']['address'] 
+    text = text + "\nTiens regarde le plan pour t'y rendre.\n Et tu savais que : " + result['extract'];
     $('.wikitext').text(text);
     $('<hr />').appendTo($('.wiki'));
     wikilink = "https://fr.wikipedia.org?curid=" + result['id']
@@ -163,9 +164,7 @@ var display_map = function(response_ajax){
     // the div for the map
     let line = '<section class="col-md-12"><div class="row mapwikirow">'
     line += '<div class="col-md-6 wiki" id="wikidiv"></div><div class="col-md-6" id="mapdiv"></div></div></section>'
-    // ! $('<section class="col-md-12"><div class="row mapwikirow"><div class="col-md-6" id="mapdiv"></div></div></section>')
-    $(line)
-    .insertAfter($('.attendrerow'));
+    $(line).insertAfter($('.attendrerow'));
     // THE MAP !
     if (mapstyle == 'GOOGLE' ){
         // Google map-style

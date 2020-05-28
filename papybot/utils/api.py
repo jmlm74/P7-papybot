@@ -1,10 +1,14 @@
-from papybot.config import GOOGLE, WIKI
+import random
 import requests
-import json
-from papybot import app
+
+from papybot.config import GOOGLE, WIKI, MESSAGES
 
 
 class Api:
+    """
+    mother class of the apis 
+    Init the query and make the HTTP request
+    """
 
     def __init__(self, query):
         self.query = query
@@ -12,27 +16,41 @@ class Api:
         self.url_complete = ""
 
     def api_get_json(self):
-        resp = requests.get(self.url_complete)
-        return resp
+        """
+            Params : none
+            Return : the response <object> of the request (json format for datas)
+        """
+        return requests.get(self.url_complete)
 
 
 class Gooapi(Api):
-
+    """
+    Google API
+    """
     def __init__(self, query):
+        """
+            Params : The parsed query
+            Return : none
+            Use the Api (mother class) init
+            Build the complete url for the request
+        """
         Api.__init__(self, query)
         self.url_complete = GOOGLE["url"] + self.query + "&key=" + GOOGLE["key"]
 
     def get_json(self):
+        """
+            Params : None
+            Return : dict of the result of the request
+            Call the api_get_json function of the mother class
+            Test the reponse Return Code and parse the datas 
+            use the 'findplacefromtext' function in google API
+        """
         result = {}
-        print(self.url_complete)
-        # ! response = requests.get(self.url_complete)
+        # get the result
         response = self.api_get_json()
-        # *fic_json = str(app.root_path) + '/static/api/1.json'
+        # build the result
         if response.status_code == 200:
-        # *if True:
             text = response.json()
-            # *with open(fic_json) as json_data:
-            # *    text = json.load(json_data)
             if text['status'] != 'OK':
                 result['address'] = 'Error'
             else:
@@ -47,14 +65,32 @@ class Gooapi(Api):
 
 
 class Wikiapi(Api):
-
+    """
+        Wiki API
+    """
     def __init__(self, query):
+        """
+            Params : the query --> result of google API (name)
+            Return : none
+            Use the Api (mother class) init
+            Build the complete url for the request
+        """
         Api.__init__(self, query)
         self.url_complete = WIKI['url1'] + query
 
     def get_json(self):
+        """
+            Params : None
+            Return : dict of the result of the request
+            The request is done in 2 times : 
+            - 1st get the page_id using the 'list=search' function 
+            - 2nd rebuild the URL and then get the page id from 1st then get the detail via 'prop=extracts'
+            Call the api_get_json twice function of the mother class
+            Test the reponse Return Code and parse the datas 
+        """
         result = {}
         page_id = ""
+        # 1st - get page id
         response = self.api_get_json()
         if response.status_code != 200:
             result['error'] = True
@@ -63,8 +99,10 @@ class Wikiapi(Api):
         t = text['query']['search'][0]
         title = t['title']
         page_id = str(t['pageid'])
+        # 2nd Buil url and get the extract of the page_id
         self.url_complete = WIKI['url3'] + page_id
         response = self.api_get_json()
+        # build the result
         if response.status_code != 200:
             result['error'] = True
             return result
@@ -74,4 +112,5 @@ class Wikiapi(Api):
         result['title'] = title
         result['extract'] = extract
         result['id'] = page_id
+        result['msg'] = random.choice(MESSAGES)
         return result

@@ -1,1 +1,104 @@
-{"batchcomplete":"","continue":{"sroffset":10,"continue":"-||"},"query":{"searchinfo":{"totalhits":41},"search":[{"ns":0,"title":"OpenClassrooms","pageid":4338589,"size":30541,"wordcount":3128,"snippet":"chez <span class=\"searchmatch\">OpenClassrooms</span>\u00a0\u00bb, <span class=\"searchmatch\">OpenClassrooms</span>\u00a0: le blog,\u200e 17 avril 2018 (lire en ligne, consult\u00e9 le 11 juillet 2018) \u00ab\u00a0<span class=\"searchmatch\">OpenClassrooms</span>\u00a0\u00bb, sur <span class=\"searchmatch\">openclassrooms</span>.com","timestamp":"2020-04-27T05:46:54Z"},{"ns":0,"title":"Massive Open Online Course","pageid":6436398,"size":54657,"wordcount":5660,"snippet":"sur <span class=\"searchmatch\">openclassrooms</span>.com (consult\u00e9 le 22 septembre 2015) \u00ab\u00a0Google\u00a0\u00bb, sur <span class=\"searchmatch\">openclassrooms</span>.com (consult\u00e9 le 22 septembre 2015) \u00ab\u00a0IBM\u00a0\u00bb, sur <span class=\"searchmatch\">openclassrooms</span>.com","timestamp":"2020-04-01T21:12:39Z"},{"ns":0,"title":"Zeste de Savoir","pageid":12431773,"size":4655,"wordcount":344,"snippet":"fond\u00e9e le 1er avril 2014, \u00e0 la suite de changements de politique d''<span class=\"searchmatch\">OpenClassrooms</span>. Celle-ci promeut le partage de connaissances et l'auto-formation, participe","timestamp":"2020-02-21T13:04:51Z"},{"ns":0,"title":"Broadcast (informatique)","pageid":3363958,"size":3825,"wordcount":551,"snippet":"Anycast G\u00e9ocast Voir Broadcast address (en) Calculer ses plages d'adresses sur <span class=\"searchmatch\">OpenClassrooms</span> Portail de l\u2019informatique Portail des t\u00e9l\u00e9communications","timestamp":"2019-05-02T12:12:24Z"},{"ns":0,"title":"Next40","pageid":12770436,"size":5709,"wordcount":598,"snippet":"pour les TPE et les PME) iAdvize (service client en ligne) OVH (cloud) <span class=\"searchmatch\">OpenClassrooms</span> (plateforme de cours en ligne) JobTeaser (recrutement de jeunes talents)","timestamp":"2020-04-28T11:50:56Z"},{"ns":0,"title":"Sudo","pageid":869228,"size":4760,"wordcount":574,"snippet":"(consult\u00e9 le 2 novembre 2019) \u00ab\u00a0Les utilisateurs et les droits\u00a0\u00bb, sur <span class=\"searchmatch\">OpenClassrooms</span> (consult\u00e9 le 1er septembre 2015). su sudosh Role-Based Access Control","timestamp":"2020-04-20T15:00:03Z"},{"ns":0,"title":"Percolation","pageid":84364,"size":7867,"wordcount":876,"snippet":"Hoshen-Kopelman Th\u00e9orie de la percolation La percolation sur le site <span class=\"searchmatch\">OpenClassrooms</span> Article La percolation, un jeu de pavages al\u00e9atoires de Hugo Duminil-Copin","timestamp":"2020-02-13T18:35:51Z"},{"ns":0,"title":"Alven","pageid":11925545,"size":6353,"wordcount":596,"snippet":"Platform.sh, Algolia, Webhelp, Textmaster (revendu \u00e0 Technicis Group) , <span class=\"searchmatch\">OpenClassrooms</span>, Liligo (revendu \u00e0 SNCF), Dataiku, Stripe, Drivy, Captain Train (revendu","timestamp":"2020-05-22T12:12:56Z"},{"ns":0,"title":"OC","pageid":1783969,"size":1600,"wordcount":190,"snippet":"fr\u00e9quence d'un processeur pour augmenter les performances de l'ordinateur. <span class=\"searchmatch\">OpenClassrooms</span>, un site web proposant des tutoriels sur l'informatique et les sciences","timestamp":"2018-12-28T23:16:59Z"},{"ns":0,"title":"Unix","pageid":3081,"size":43259,"wordcount":4666,"snippet":"(consult\u00e9 le 2 juillet 2017). \u00ab\u00a0Mais c'est quoi, Linux\u00a0? @<span class=\"searchmatch\">OpenClassrooms</span>\u00a0\u00bb, sur <span class=\"searchmatch\">OpenClassrooms</span> (consult\u00e9 le 3 juillet 2017). (en) Andrew Tanenbaum, \u00ab\u00a0Some","timestamp":"2020-05-26T03:03:23Z"}]}}
+{
+  "batchcomplete": "",
+  "continue": {
+    "sroffset": 10,
+    "continue": "-||"
+  },
+  "query": {
+    "searchinfo": {
+      "totalhits": 41
+    },
+    "search": [
+      {
+        "ns": 0,
+        "title": "OpenClassrooms",
+        "pageid": 4338589,
+        "size": 30541,
+        "wordcount": 3128,
+        "snippet": "chez <span class=\"searchmatch\">OpenClassrooms</span> », <span class=\"searchmatch\">OpenClassrooms</span> : le blog,‎ 17 avril 2018 (lire en ligne, consulté le 11 juillet 2018) « <span class=\"searchmatch\">OpenClassrooms</span> », sur <span class=\"searchmatch\">openclassrooms</span>.com",
+        "timestamp": "2020-04-27T05:46:54Z"
+      },
+      {
+        "ns": 0,
+        "title": "Massive Open Online Course",
+        "pageid": 6436398,
+        "size": 54657,
+        "wordcount": 5660,
+        "snippet": "sur <span class=\"searchmatch\">openclassrooms</span>.com (consulté le 22 septembre 2015) « Google », sur <span class=\"searchmatch\">openclassrooms</span>.com (consulté le 22 septembre 2015) « IBM », sur <span class=\"searchmatch\">openclassrooms</span>.com",
+        "timestamp": "2020-04-01T21:12:39Z"
+      },
+      {
+        "ns": 0,
+        "title": "Zeste de Savoir",
+        "pageid": 12431773,
+        "size": 4655,
+        "wordcount": 344,
+        "snippet": "fondée le 1er avril 2014, à la suite de changements de politique d''<span class=\"searchmatch\">OpenClassrooms</span>. Celle-ci promeut le partage de connaissances et l'auto-formation, participe",
+        "timestamp": "2020-02-21T13:04:51Z"
+      },
+      {
+        "ns": 0,
+        "title": "Broadcast (informatique)",
+        "pageid": 3363958,
+        "size": 3825,
+        "wordcount": 551,
+        "snippet": "Anycast Géocast Voir Broadcast address (en) Calculer ses plages d'adresses sur <span class=\"searchmatch\">OpenClassrooms</span> Portail de l’informatique Portail des télécommunications",
+        "timestamp": "2019-05-02T12:12:24Z"
+      },
+      {
+        "ns": 0,
+        "title": "Next40",
+        "pageid": 12770436,
+        "size": 5709,
+        "wordcount": 598,
+        "snippet": "pour les TPE et les PME) iAdvize (service client en ligne) OVH (cloud) <span class=\"searchmatch\">OpenClassrooms</span> (plateforme de cours en ligne) JobTeaser (recrutement de jeunes talents)",
+        "timestamp": "2020-04-28T11:50:56Z"
+      },
+      {
+        "ns": 0,
+        "title": "Sudo",
+        "pageid": 869228,
+        "size": 4760,
+        "wordcount": 574,
+        "snippet": "(consulté le 2 novembre 2019) « Les utilisateurs et les droits », sur <span class=\"searchmatch\">OpenClassrooms</span> (consulté le 1er septembre 2015). su sudosh Role-Based Access Control",
+        "timestamp": "2020-04-20T15:00:03Z"
+      },
+      {
+        "ns": 0,
+        "title": "Percolation",
+        "pageid": 84364,
+        "size": 7867,
+        "wordcount": 876,
+        "snippet": "Hoshen-Kopelman Théorie de la percolation La percolation sur le site <span class=\"searchmatch\">OpenClassrooms</span> Article La percolation, un jeu de pavages aléatoires de Hugo Duminil-Copin",
+        "timestamp": "2020-02-13T18:35:51Z"
+      },
+      {
+        "ns": 0,
+        "title": "Alven",
+        "pageid": 11925545,
+        "size": 6353,
+        "wordcount": 596,
+        "snippet": "Platform.sh, Algolia, Webhelp, Textmaster (revendu à Technicis Group) , <span class=\"searchmatch\">OpenClassrooms</span>, Liligo (revendu à SNCF), Dataiku, Stripe, Drivy, Captain Train (revendu",
+        "timestamp": "2020-05-22T12:12:56Z"
+      },
+      {
+        "ns": 0,
+        "title": "OC",
+        "pageid": 1783969,
+        "size": 1600,
+        "wordcount": 190,
+        "snippet": "fréquence d'un processeur pour augmenter les performances de l'ordinateur. <span class=\"searchmatch\">OpenClassrooms</span>, un site web proposant des tutoriels sur l'informatique et les sciences",
+        "timestamp": "2018-12-28T23:16:59Z"
+      },
+      {
+        "ns": 0,
+        "title": "Unix",
+        "pageid": 3081,
+        "size": 43259,
+        "wordcount": 4666,
+        "snippet": "(consulté le 2 juillet 2017). « Mais c'est quoi, Linux ? @<span class=\"searchmatch\">OpenClassrooms</span> », sur <span class=\"searchmatch\">OpenClassrooms</span> (consulté le 3 juillet 2017). (en) Andrew Tanenbaum, « Some",
+        "timestamp": "2020-05-26T03:03:23Z"
+      }
+    ]
+  }
+}

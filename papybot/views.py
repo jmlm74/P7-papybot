@@ -1,4 +1,4 @@
-from flask import Flask, render_template, abort, request, url_for, jsonify
+from flask import Flask, render_template, request, jsonify
 from datetime import datetime
 import json
 
@@ -53,11 +53,6 @@ def about():
     return render_template("pages/about.html", post=post)
 
 
-@app.route('/contact/')
-def contact():
-    return render_template("pages/contact.html")
-
-
 @app.route('/go/')
 def go():
     """
@@ -65,40 +60,54 @@ def go():
         question/answer page
     """
     post['title'] = "discuter"
-    if not request.script_root:
-        request.script_root = url_for('go', _external=True)
+    # if not request.script_root:
+    #    request.script_root = url_for('go', _external=True)
     return render_template("pages/go.html", post=post)
 
 
 @app.errorhandler(404)
 def page_not_found(error):
+    """
+        the 404 page
+    """
     post['title'] = "NotFound"
-    return render_template('errors/404.html', post=post), 404  # les 2nd 404 permet de renvoyer un VRAI 404 !
+    # the 404 parameter permit to return a real 404 code
+    return render_template('errors/404.html', post=post), 404
 
 
 @app.route("/ajax/", methods=['POST'])
 def ajax():
+    """
+        Ajax function
+        Param : The post --> The child question "as is" (format json)
+        return (a dict of 2 dicts - google result end wiki result)
+        1st The question is 'dejsonified'
+        2nd The question is parsed
+        3rd The result is send to Google Api
+        4th if Google OK the result (name) is passed to the wiki api
+    """
     google_error = False
     if request.method == 'POST':
         request_data = json.loads(request.data)
         query = Query(request_data['question'])
         resp = query.parse_query()
-        print(resp)
-        # ici on envoi pour google
+        # Google API
         my_gooapi = Gooapi(resp)
         goo_result = my_gooapi.get_json()
+        # variable map is used in templates
         map = map_provider()
-        #! resp_dict = jsonify({'map': map, 'tab_result': tab_result})
+        # test the google API result
         try:
             goo_result['name']
         except KeyError:
             google_error = True
             goo_result['adress'] = 'Error'
             wiki_result = ""
+        # google OK --> WIKI API
         if not google_error:
             my_wikiapi = Wikiapi(goo_result['name'])
             wiki_result = my_wikiapi.get_json()
-            print(wiki_result)
+        # build the result
         resp_dict = jsonify({'goo_result': goo_result, 'wiki_result': wiki_result})
     return resp_dict
 
