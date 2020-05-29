@@ -13,7 +13,7 @@ def get_url_test(page):
         Return complete url
         Build the complete url to test with port
     """
-    return "http://127.0.0.1:" + str(os.environ['PORT']) + '/' + page + '/'
+    return "http://127.0.0.1:" + str(os.environ['APPPORT']) + '/' + page + '/'
 
 
 # test homepage return 200
