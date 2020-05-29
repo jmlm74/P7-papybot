@@ -97,8 +97,12 @@ class Wikiapi(Api):
             result['error'] = True
             return result
         text = response.json()
-        t = text['query']['search'][0]
-        title = t['title']
+        try:
+            t = text['query']['search'][0]
+            title = t['title']
+        except IndexError:
+            result['error'] = True
+            return result
         page_id = str(t['pageid'])
         # 2nd Buil url and get the extract of the page_id
         self.url_complete = WIKI['url3'] + page_id

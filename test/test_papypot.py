@@ -82,6 +82,42 @@ def test_gooapi_ok(monkeypatch):
     assert tab_result['latitude'] == 48.85837009999999
 
 
+def test_gooapi_resultnotok(monkeypatch):
+
+    class MockResp:
+        """
+        Mock the requests.get
+        status_code is the http code response
+        json() is to mock requests.json() and simulate the json response of requests.get by reading the
+        file which is in fact the json return of the API request  -->
+            The return is the same as requests.get --> get in a sample file in static/api
+        The test is to get a return-address as 'Error' --> the status is not OK 
+            (ZERO RESULT or BAD REQUEST)
+        """
+        def __init__(self):
+            self.status_code = 200
+
+        def json(self):
+            fic_json = str(app.root_path) + '/static/api/2.json'
+            json_data = open(fic_json, 'r')
+            text = json_data.read()
+            json_data.close()
+            json_response = {}
+            json_response = json.loads(text)
+            return json_response
+
+    # the file 1.json contains the real return of google api for the address of the eiffel tower
+    testgooapi = api.Gooapi('toto titi tata')
+
+    def mock_request_get(url):
+        mock_resp = MockResp()
+        return mock_resp
+
+    monkeypatch.setattr('requests.get', mock_request_get)
+    tab_result = testgooapi.get_json()
+    assert tab_result['address'] == 'Error'
+
+
 # test wikiapi
 def test_wikiapi_ok(monkeypatch):
 
@@ -106,7 +142,7 @@ def test_wikiapi_ok(monkeypatch):
                 fic_json = str(app.root_path) + '/static/api/10.json'
                 MockResp.passed += 1
             else:
-                fic_json = str(app.root_path) + '/static/api/12.json'
+                fic_json = str(app.root_path) + '/static/api/11.json'
             json_data = open(fic_json, 'r')
             text = json_data.read()
             json_data.close()
@@ -123,3 +159,45 @@ def test_wikiapi_ok(monkeypatch):
     monkeypatch.setattr('requests.get', mock_request_get)
     result = test_wikiapi.get_json()
     assert result['extract'][0:14] == 'OpenClassrooms'
+
+
+def test_wikiapi_erreur(monkeypatch):
+
+    class MockResp:
+        """
+        Mock the requests.get
+        status_code is the http code response
+        json() is to mock requests.json() and simulate the json response of requests.get by reading the
+        file which is in fact the json return of the API request  -->
+            The return is the same as requests.get --> get in a sample file in static/api
+        The class variable "passed" is used because we use requests.json() 2 times in the same method and
+        each time we reinstance the class MockResp So I needed a class variable to have a counter too open
+            2 differents files
+        """
+        passed = 0
+
+        def __init__(self):
+            self.status_code = 200
+
+        def json(self):
+            if MockResp.passed == 0:
+                fic_json = str(app.root_path) + '/static/api/12.json'
+                MockResp.passed += 1
+            else:
+                fic_json = str(app.root_path) + '/static/api/12.json'
+            json_data = open(fic_json, 'r')
+            text = json_data.read()
+            json_data.close()
+            json_response = {}
+            json_response = json.loads(text)
+            return json_response
+
+    test_wikiapi = api.Wikiapi("Tour Eiffel")
+
+    def mock_request_get(url):
+        mock_resp = MockResp()
+        return mock_resp
+
+    monkeypatch.setattr('requests.get', mock_request_get)
+    result = test_wikiapi.get_json()
+    assert result['error'] is True

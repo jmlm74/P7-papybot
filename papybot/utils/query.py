@@ -58,7 +58,6 @@ class Query:
             list_query2.append(word.lower())
 
         # 3rd --> put the std stopwords file into list and lower the list
-        print(self.ficstopwords)
         with open(self.ficstopwords, 'r') as f:
             stop_words = json.load(f)
         for t in stop_words:

@@ -1,25 +1,4 @@
 {
-   "candidates" : [
-      {
-         "formatted_address" : "7 Cité Paradis, 75010 Paris, France",
-         "geometry" : {
-            "location" : {
-               "lat" : 48.8748465,
-               "lng" : 2.3504873
-            },
-            "viewport" : {
-               "northeast" : {
-                  "lat" : 48.87622362989272,
-                  "lng" : 2.351843679892722
-               },
-               "southwest" : {
-                  "lat" : 48.87352397010727,
-                  "lng" : 2.349144020107278
-               }
-            }
-         },
-         "name" : "OpenClassrooms"
-      }
-   ],
-   "status" : "OK"
+   "candidates" : [],
+   "status" : "ZERO_RESULTS"
 }
