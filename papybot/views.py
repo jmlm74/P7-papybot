@@ -5,7 +5,7 @@ import os
 
 from .utils.query import Query
 from .utils.api import Gooapi, Wikiapi
-from .config import map_style, MAPBOX, GOOGLE
+from .config import map_style, MAPBOX
 
 from . import app
 """
@@ -87,25 +87,23 @@ def ajax():
         3rd The result is send to Google Api
         4th if Google OK the result (name) is passed to the wiki api
     """
-    google_error = False
+    # variable map is used in templates
+    map = map_provider()
     if request.method == 'POST':
         request_data = json.loads(request.data)
         query = Query(request_data['question'])
         resp = query.parse_query()
         # Google API
         my_gooapi = Gooapi(resp)
-        goo_result = my_gooapi.get_json()
-        # variable map is used in templates
-        map = map_provider()
-        # test the google API result
         try:
+            goo_result = my_gooapi.get_json()
+            # test the google API result : "Request denied" ie
             goo_result['name']
         except KeyError:
-            google_error = True
             goo_result['adress'] = 'Error'
             wiki_result = ""
-        # google OK --> WIKI API
-        if not google_error:
+        else:
+            # google OK --> WIKI API
             my_wikiapi = Wikiapi(goo_result['name'])
             wiki_result = my_wikiapi.get_json()
         # build the result

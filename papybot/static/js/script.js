@@ -1,30 +1,30 @@
 $(function(){
     console.log("loaded")
     $('<input type="text" class="form-control test" value="Bonjour, mon petit ! Que puis-je pour toi ?" size="32" readonly>').appendTo($('.bonjour'));
-    $('form.question').on('submit', submit_event);
+    $('form.question').on('submit', SubmitEvent);
     $('.reload').on('click',function(){
         $('.quest').val('');
         location.reload();
     });
 
     // init the mapstyle (OSM or Google)
-    map_style()
+    MapStyle()
     // mapstyle dropdown menu (google map or OSM map)
     $('li .osm').on('click',function(){
         console.log("Vu OSM");
-        Send_ajax('post',"/goosm/","OSM","text","text/plain")
+        SendAjax('post',"/goosm/","OSM","text","text/plain")
         .done( function(response) {
             mapstyle = "OSM";
-            map_style();
+            MapStyle();
             location.reload(true);
         });
     });
     $('li .google').on('click',function(){
         console.log("Vu GOOGLE");
-        Send_ajax('post',"/goosm/","GOOGLE","text","text/plain")
+        SendAjax('post',"/goosm/","GOOGLE","text","text/plain")
         .done( function(response) {
             mapstyle = "GOOGLE"
-            map_style()
+            MapStyle()
             location.reload(true);
         });
     });
@@ -32,7 +32,7 @@ $(function(){
 });
 
 
-var submit_event = function(event){
+var SubmitEvent = function(event){
     var question;
     var data;
 
@@ -53,11 +53,11 @@ var submit_event = function(event){
 
     question={'question': $('.quest').val()};
     data = JSON.stringify(question);
-    /* the send_ajax is a promise --> wait for the done or the fail */
-    Send_ajax('post','/ajax/',data)
+    /* the SendAjax is a promise --> wait for the done or the fail */
+    SendAjax('post','/ajax/',data)
     .done( function(response) {
-        display_map(response)
-        display_wiki(response)
+        DisplayMap(response)
+        DisplayWiki(response)
 
     })
     .fail( function(response) {
@@ -68,7 +68,7 @@ var submit_event = function(event){
 };
 
 
-var Send_ajax = function(type=post ,url, data, datatype='json', contenttype='application/json' ){
+var SendAjax = function(type=post ,url, data, datatype='json', contenttype='application/json' ){
     /*
     Send ajax request to server 
     */
@@ -81,7 +81,7 @@ var Send_ajax = function(type=post ,url, data, datatype='json', contenttype='app
     })
 }; 
 
-var map_style = function(){
+var MapStyle = function(){
     /*
     The dropdown menu map-style 
     */
@@ -99,7 +99,7 @@ var map_style = function(){
 /************************/
 /*      Display Wiki    */
 /************************/
-var display_wiki = function(response_ajax){
+var DisplayWiki = function(response_ajax){
     /*
     Display the formatted wiki result in a textarea 
     href to the wikipedia link
@@ -133,7 +133,7 @@ var display_wiki = function(response_ajax){
 /************************/
 /*      Display Map     */
 /************************/
-var display_map = function(response_ajax){
+var DisplayMap = function(response_ajax){
     /*
     display the map (OSM or Google)
     params : The ajax response

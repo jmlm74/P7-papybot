@@ -5,4 +5,4 @@
 "endroit", "lieu", "lieux","avance","coordonnées", "bises", "espere","souhaite","bisous","embrasse",
 "peux","soir","soiree","matin","enfin","passe","remercie","voir","dire","pense", "peux", "situe",
 "recherche","voudrais","savoir","pouvoir","trouver","remercier","vois","adresser","embrasser", 
-"pere", "mere"]
+"pere", "mere","siege"]

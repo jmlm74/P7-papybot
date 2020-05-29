@@ -3,26 +3,33 @@ import json
 
 import papybot.utils.query as query
 import papybot.utils.api as api
-from  papybot import app
+from papybot import app
+import os
+
+
+def get_url_test(page):
+    """
+        Args : the page
+        Return complete url
+        Build the complete url to test with port
+    """
+    return "http://127.0.0.1:" + str(os.environ['PORT']) + '/' + page + '/'
+
 
 # test homepage return 200
 def test_index_page_return200():
-    print("test_index")
-    # rc = requests.get("http://127.0.0.1:5000/index/")
-    rc = requests.get("https://jmlm-p7papybot.herokuapp.com/index/")
+    rc = requests.get(get_url_test('/index/'))
     assert rc.status_code == 200
+
 
 # test 404 page return 404 and not 200
 def test_foobar_return404():
-    print("test_404")
-    # rc = requests.get("http://127.0.0.1:5000/foobar/")
-    rc = requests.get("https://jmlm-p7papybot.herokuapp.com/foobar/")
+    rc = requests.get(get_url_test('/foobar/'))
     assert rc.status_code == 404
 
 
 # test parser stand alone
 def test_parser_ok():
-    print("test_parser")
     req = query.Query("Salut GrandPy ! sais tu quelle est la capitale de la Bulgarie ? Merci !")
     result = req.parse_query()
     assert result == "capitale bulgarie"
@@ -30,12 +37,12 @@ def test_parser_ok():
 
 # test gooapi
 def test_gooapi_ok(monkeypatch):
-    print("Test_goopai")
+
     class MockResp:
         """
         Mock the requests.get
         status_code is the http code response
-        json() is to mock requests.json() and simulate the json response of requests.get by reading the 
+        json() is to mock requests.json() and simulate the json response of requests.get by reading the
         file which is in fact the json return of the API request  -->
             The return is the same as requests.get --> get in a sample file in static/api
         """
@@ -65,7 +72,6 @@ def test_gooapi_ok(monkeypatch):
 
 # test wikiapi
 def test_wikiapi_ok(monkeypatch):
-    print("test_wikiapi")
 
     class MockResp:
         """
@@ -75,7 +81,7 @@ def test_wikiapi_ok(monkeypatch):
         file which is in fact the json return of the API request  -->
             The return is the same as requests.get --> get in a sample file in static/api
         The class variable "passed" is used because we use requests.json() 2 times in the same method and
-        each time we reinstance the class MockResp So I needed a class variable to have a counter too open 
+        each time we reinstance the class MockResp So I needed a class variable to have a counter too open
             2 differents files
         """
         passed = 0

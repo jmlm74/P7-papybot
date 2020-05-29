@@ -1,15 +1,14 @@
 map_style = {
-    'GOOGLE': False,
-    'OSM': True,
+    'GOOGLE': True,
+    'OSM': False,
 }
 
 MAPBOX = {
-    'key': "pk.eyJ1Ijoiam1sbTc0IiwiYSI6ImNrYWpwbTFmZDBjdG4yeW1pN2hiajR2NGwifQ.kxwD_WKTvSXMiPtHkQV2HQ",
+    'key': "123456789",
 }
 
 GOOGLE = {
     'key': "123456789",
-    # 'url': "https://maps.googleapis.com/maps/api/geocode/json?address=",
     'url': "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?inputtype=textquery&fields=name,geometry,formatted_address&input=",
 }
 
