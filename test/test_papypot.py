@@ -1,10 +1,18 @@
 import requests
 import json
+import pytest
+
 
 import papybot.utils.query as query
 import papybot.utils.api as api
 from papybot import app
 import os
+
+
+# pytest fixture top init test functions
+@pytest.fixture
+def client():
+    app.config['TESTING'] = True
 
 
 def get_url_test(page):
@@ -18,18 +26,22 @@ def get_url_test(page):
 
 # test homepage return 200
 def test_index_page_return200():
-    rc = requests.get(get_url_test('/index/'))
-    assert rc.status_code == 200
+    # rc = requests.get(get_url_test('/index/'))
+    with app.test_client() as clt:
+        rc = clt.get('/index/')
+        assert rc.status_code == 200
 
 
 # test 404 page return 404 and not 200
 def test_foobar_return404():
-    rc = requests.get(get_url_test('/foobar/'))
-    assert rc.status_code == 404
+    with app.test_client() as clt:
+        rc = clt.get('/foobar/')
+        assert rc.status_code == 404
 
 
 # test parser stand alone
 def test_parser_ok():
+    print(str(app.root_path))
     req = query.Query("Salut GrandPy ! sais tu quelle est la capitale de la Bulgarie ? Merci !")
     result = req.parse_query()
     assert result == "capitale bulgarie"

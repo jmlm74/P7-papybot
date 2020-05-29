@@ -1,1 +1,0 @@
-["grandpy","papy","grand-pere","salut","bonjour","hello","connais","cherche","sais", "penses", "quoi", "dis", "entendu", "parlé","hello", "salut", "bonjour", "coucou", "salutations", "pépé", "merci","adresse", "endroit", "lieu", "coordonnées","grandma","indique","indiquer","hier","demain","aujourd","hui"]
