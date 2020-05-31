@@ -9,24 +9,14 @@ from papybot import app
 import os
 
 
-# pytest fixture top init test functions
+# pytest fixture to init test functions
 @pytest.fixture
 def client():
     app.config['TESTING'] = True
 
 
-def get_url_test(page):
-    """
-        Args : the page
-        Return complete url
-        Build the complete url to test with port
-    """
-    return "http://127.0.0.1:" + str(os.environ['APPPORT']) + '/' + page + '/'
-
-
 # test homepage return 200
 def test_index_page_return200():
-    # rc = requests.get(get_url_test('/index/'))
     with app.test_client() as clt:
         rc = clt.get('/index/')
         assert rc.status_code == 200
@@ -41,7 +31,9 @@ def test_foobar_return404():
 
 # test parser stand alone
 def test_parser_ok():
-    print(str(app.root_path))
+    """
+        Test the parser in stand alone
+    """
     req = query.Query("Salut GrandPy ! sais tu quelle est la capitale de la Bulgarie ? Merci !")
     result = req.parse_query()
     assert result == "capitale bulgarie"
@@ -49,7 +41,10 @@ def test_parser_ok():
 
 # test gooapi
 def test_gooapi_ok(monkeypatch):
-
+    """
+        Test the google API on file
+        Must return a good latitude
+    """
     class MockResp:
         """
         Mock the requests.get
@@ -83,7 +78,10 @@ def test_gooapi_ok(monkeypatch):
 
 
 def test_gooapi_resultnotok(monkeypatch):
-
+    """
+        Test the Google API --> bad request or Zero Result --> Nothing returned
+        --> must return Error
+    """
     class MockResp:
         """
         Mock the requests.get
@@ -120,7 +118,11 @@ def test_gooapi_resultnotok(monkeypatch):
 
 # test wikiapi
 def test_wikiapi_ok(monkeypatch):
-
+    """
+        test the wiki api on files
+        --> openclassrooms wiki page
+        --> must return the name  openclassroom
+    """"
     class MockResp:
         """
         Mock the requests.get
@@ -162,7 +164,10 @@ def test_wikiapi_ok(monkeypatch):
 
 
 def test_wikiapi_erreur(monkeypatch):
-
+    """
+        Test the wiki API  on a blank page --> nothing returned by wiki
+        --> must return error
+    """
     class MockResp:
         """
         Mock the requests.get
@@ -192,7 +197,7 @@ def test_wikiapi_erreur(monkeypatch):
             json_response = json.loads(text)
             return json_response
 
-    test_wikiapi = api.Wikiapi("Tour Eiffel")
+    test_wikiapi = api.Wikiapi("FooBar nada nothing to return")
 
     def mock_request_get(url):
         mock_resp = MockResp()

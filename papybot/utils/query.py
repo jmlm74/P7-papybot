@@ -34,7 +34,7 @@ class Query:
         """
         stop_words_minus = []
         ponctuation = ['.', ',', '?', '!', '-', "'", '"', '[', ']', '/', '{', '}', '<', '>', '&',
-            '^', '#', '$']
+        '^', '#', '$']
         list_words_ok = []
         list_query = []
         list_query2 = []

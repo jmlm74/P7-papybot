@@ -7,7 +7,7 @@ from papybot.config import GOOGLE, WIKI, MESSAGES
 
 class Api:
     """
-    mother class of the apis 
+    mother class of the apis
     Init the query and make the HTTP request
     """
 
@@ -83,11 +83,11 @@ class Wikiapi(Api):
         """
             Params : None
             Return : dict of the result of the request
-            The request is done in 2 times : 
-            - 1st get the page_id using the 'list=search' function 
+            The request is done in 2 times :
+            - 1st get the page_id using the 'list=search' function
             - 2nd rebuild the URL and then get the page id from 1st then get the detail via 'prop=extracts'
             Call the api_get_json twice function of the mother class
-            Test the reponse Return Code and parse the datas 
+            Test the reponse Return Code and parse the datas
         """
         result = {}
         page_id = ""
