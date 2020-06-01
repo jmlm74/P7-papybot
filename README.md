@@ -47,3 +47,20 @@ Développez la nouvelle fonctionnalité qui donne une âme à notre Papy Robot !
 Pour cela, répétez l'étape 4 mais cette fois-ci en utilisant l'API Media Wiki. Vous pouvez également vous amuser en inventant plusieurs phrases différentes que GrandPy pourrait dire aléatoirement 🤓
 7 : Mise en ligne 🚀  
 Puis mettez en ligne votre belle application en utilisant Heroku.  
+
+## Livrables  
+### Principe  
+ - Posez votre question à GrandPy en langage naturel.  
+ - La question est parsée pour en ressortir les mots clés  
+ - Les mots clés sont envoyés à l'API de GOOGLE MAP puis WIKIPEDIA pour trouver l'adresse du lieu et une petite histoire (3 1eres phrases de wikipedia). Si aucune donnée ne remonte de GOOGLE MAP le programme vous invite à reformuler votre question  
+### Langages de developpement et outils  
+ - python  
+ - Flask  
+ - Google Map  
+ - Wikipedia  
+ - OpenStreetMap (affichage Map)  
+ - Pytest (tests unitaires)  
+### Liens  
+L'application est visible [ici](https://jmlm-p7papybot.herokuapp.com/).  
+La documentation se trouve [à cet endroit](https://github.com/jmlm74/P7-papybot/tree/master/Doc).  
+
