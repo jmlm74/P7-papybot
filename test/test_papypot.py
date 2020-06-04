@@ -122,7 +122,7 @@ def test_wikiapi_ok(monkeypatch):
         test the wiki api on files
         --> openclassrooms wiki page
         --> must return the name  openclassroom
-    """"
+    """
     class MockResp:
         """
         Mock the requests.get

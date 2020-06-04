@@ -63,4 +63,19 @@ Puis mettez en ligne votre belle application en utilisant Heroku.
 ### Liens  
 L'application est visible [ici](https://jmlm-p7papybot.herokuapp.com/).  
 La documentation se trouve [à cet endroit](https://github.com/jmlm74/P7-papybot/tree/master/Doc).  
+  
+### Installation & pré-requis  
+#### Pré-requis  
+ - Vous devez disposer d'une clé pour l'API de GOOGLE. Cette clé doit etre autorisée pour : 
+    - places API
+    - Maps Javascript API
+ - Créer une variable d'environnement GOOGLE_KEY=XXXXX ou XXXX est votre clé Google  
+ - Créer un environnement virtuel avec pipenv, virtualenv ou autre et l'activer.  
+#### Installation  
+ - Télécharger le repo.  
+ - Se mettre dans le répertoire du repo et installer les requis avec la commande suivante : pip install -r requirements.txt.  
+ - Lancer la commande suivante : 'python -m papybot.main' Puis se avec votre navigateur favori : Http://localhost:5000  
+#### Tests unitaires  
+ - Le moteur Flask lancé , se mettre à la racine du projets et lancer la commande pytest.  
+ - Le fichier utilisé pour les tests est test_papybot.py  
 

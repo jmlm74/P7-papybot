@@ -1,5 +1,4 @@
 $(function(){
-    console.log("loaded")
     $('<input type="text" class="form-control test" value="Bonjour, mon petit ! Que puis-je pour toi ?" size="32" readonly>').appendTo($('.bonjour'));
     $('form.question').on('submit', SubmitEvent);
     $('.reload').on('click',function(){
